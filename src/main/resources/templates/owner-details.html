@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <title>Owner Details</title>
+</head>
+<body>
+<header th:replace="~{header-and-footer::Header}">
+    <h1>Some header text</h1>
+</header>
+<main>
+    <h2>Owner Details</h2>
+    <p>
+        <span class="output_label">Owner ID:</span> <span class="output_value" th:text="${owner.id}"></span>
+    </p>
+    <p>
+        <span class="output_label">First Name:</span> <span class="output_value" th:text="${owner.firstName}"></span>
+    </p>
+    <p>
+        <span class="output_label">Last Name:</span> <span class="output_value" th:text="${owner.lastName}"></span>
+    </p>
+
+    <h3>Registered for Pets</h3>
+    <table th:unless="${#lists.isEmpty(owner.pets)}">
+        <tr>
+            <th>Count</th>
+            <th>Name</th>
+            <th>Pet Kind</th>
+            <th>Link</th>
+        </tr>
+        <tr th:each="pet, status : ${owner.pets}">
+            <td th:text="${status.count}"></td>
+            <td th:text="${pet.name}"></td>
+            <td th:text="${pet.petKind}"></td>
+            <td><a th:href="@{/pets/{id}(id=${pet.id})}">View</a></td>
+        </tr>
+    </table>
+    <p th:if="${#lists.isEmpty(owner.pets)}" class="warning">
+        The owner has not registered for any pets.
+    </p>
+    <p>
+        <a th:href="@{/index}">Index</a>
+    </p>
+</main>
+<footer th:replace="~{header-and-footer::footer}">
+    Some footer text
+</footer>
+</body>
+</html>

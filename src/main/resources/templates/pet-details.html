@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <title>Pet Details</title>
+</head>
+<body>
+<header th:replace="~{header-and-footer::Header}">
+    <h1>Some header text</h1>
+</header>
+<main>
+    <h2>Pet Details</h2>
+    <p>
+        <span class="output_label">Pet ID:</span><span class="output_value" th:text="${pet.id}"></span>
+    </p>
+    <p>
+        <span class="output_label">Pet name:</span><span class="output_value" th:text="${pet.name}"></span>
+    </p>
+    <p>
+        <span class="output_label">Pet kind:</span><span class="output_value" th:text="${pet.petKind}"></span>
+    </p>
+    <p>
+        <span class="output_label">Pet age:</span><span class="output_value" th:text="${pet.age}"></span>
+    </p>
+    <p>
+        <img th:src="@{'/images/pets/' + ${pet.image}}" alt="Pet Image">
+    </p>
+    <h3>Pet Owner</h3>
+    <p>
+        <span class="output_value" th:text="${pet.owner.firstName}"></span>
+        <span class="output_value" th:text="${pet.owner.lastName}"></span>&nbsp;
+        <a th:href="@{/owners/{id}(id=${pet.owner.id})}">View</a>
+    </p>
+    <p>
+        <a th:href="@{/index}">Index</a>
+    </p>
+</main>
+<footer th:replace="~{header-and-footer::footer}">
+    Some footer text
+</footer>
+</body>
+</html>

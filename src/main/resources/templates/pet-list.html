@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <title>Pet List</title>
+</head>
+<body>
+<header th:replace="~{header-and-footer::Header}">
+    <h1>Some header text</h1>
+</header>
+<main>
+    <h2>Pet List</h2>
+    <table>
+        <tr>
+            <th>Count</th>
+            <th>Name</th>
+            <th>Pet Kind</th>
+            <th>Link</th>
+        </tr>
+        <tr th:each="pet, status : ${pets}">
+            <td th:text="${status.count}"></td>
+            <td th:text="${pet.name}"></td>
+            <td th:text="${pet.petKind}"></td>
+            <td><a th:href="@{/pets/{id}(id=${pet.id})}">View</a></td>
+        </tr>
+    </table>
+    <p th:if="${#lists.isEmpty(pets)}" class="error">
+        No pet data.
+    </p>
+    <p>
+        <a th:href="@{/index}">Index</a>
+    </p>
+</main>
+<footer th:replace="~{header-and-footer::footer}">
+    Some footer text
+</footer>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <title>Index</title>
+</head>
+<body>
+<header th:replace="~{header-and-footer::Header}">
+    <h1>Some header text</h1>
+</header>
+<main>
+    <h2>Index</h2>
+    <p><a th:href="@{/pets}">Pet List</a></p>
+    <p><a th:href="@{/owners}">Owner List</a></p>
+</main>
+<footer th:replace="~{header-and-footer::Footer}">
+    <p>Some footer text</p>
+</footer>
+</body>
+</html>
