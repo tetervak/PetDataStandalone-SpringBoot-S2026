@@ -59,6 +59,13 @@ a:hover {
     text-decoration: underline;
 }
 
+img.pet_image {
+    background: #03a9f4;
+    box-shadow: 4px 4px 10px #03a9f4;
+    margin-left: 1em;
+    border: solid 2px #03a9f4;
+}
+
 .warning{
     margin-left: 2em;
     font-weight: bolder;
