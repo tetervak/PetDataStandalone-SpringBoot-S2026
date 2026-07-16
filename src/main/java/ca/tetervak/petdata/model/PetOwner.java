@@ -66,7 +66,7 @@ public class PetOwner {
         this.pets = pets;
     }
 
-    Integer getPetCount(){
+    public Integer getPetCount(){
         return pets.size();
     }
 
