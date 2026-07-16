@@ -23,7 +23,6 @@ public class Pet {
     @JoinColumn(name = "owner_id", nullable = false)
     private PetOwner owner = null;
 
-    @JsonGetter
     Integer getOwnerId(){
         return owner.getId();
     }
