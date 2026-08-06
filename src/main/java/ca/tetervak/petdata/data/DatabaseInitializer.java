@@ -18,6 +18,11 @@ public class DatabaseInitializer {
     @PostConstruct
     public void init(){
 
+        long ownerCount = petOwnerRepository.count();
+        if(ownerCount > 0){
+            return;
+        }
+
         PetOwner patricia = new PetOwner("Patricia", "Johnson");
         patricia.addPet(new Pet("Charlie", "dog", 3, "charlie_dog.jpg"));
         patricia.addPet(new Pet("Fluffy", "cat", 2, "fluffy_cat.jpg"));
